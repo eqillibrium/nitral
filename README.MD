@@ -4,4 +4,6 @@
 3. create .env file end set:  
 TG_TOKEN=(your pesonal telegram token)  
 DATABASE_URL="postgresql://postgres:admin@localhost:5432/shopdb?schema=public"
-4. run " npm run build " and then " npm run start "
+4. run " npm run build " and then " npm run start "  
+
+You can find my bot by @NitralBot
