@@ -6,7 +6,7 @@ import { ILogger } from '../logger/logger.interface'
 
 @injectable()
 export class ConfigService implements IConfigService {
-	protected readonly config!: DotenvParseOutput;
+	protected readonly config!: DotenvParseOutput
 	constructor(@inject(TYPES.Logger) private logger: ILogger) {
 		const result: DotenvConfigOutput = config()
 		if (result.error) {

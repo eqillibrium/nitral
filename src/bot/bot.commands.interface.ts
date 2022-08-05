@@ -1,6 +1,6 @@
-import { Context } from "telegraf";
+import { Context } from 'telegraf'
 
 export interface CommandMapElement {
-  command: string,
-  action: (ctx: Context) => void
+	command: string
+	action: (ctx: Context) => void
 }

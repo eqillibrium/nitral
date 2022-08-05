@@ -18,7 +18,7 @@ export class PrismaService {
 			this.logger.log('[Prisma Service] the database is successfully connected!')
 		} catch (e) {
 			if (e instanceof Error) {
-				this.logger.error('[Prisma Service] Database connection error!' + e.message)
+				throw Error(e.message)
 			}
 		}
 	}
