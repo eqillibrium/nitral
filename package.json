@@ -5,9 +5,11 @@
   "main": "src/main.ts",
   "type": "commonjs",
   "scripts": {
+    "seed": "tsc -t es5 prisma/seeds/index.ts && node prisma/seeds/index.js",
     "build": "tsc",
     "start": "node ./dist/main.js",
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "lint:fix": "eslint ./src/** --fix"
   },
   "repository": {
     "type": "git",
