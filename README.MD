@@ -3,6 +3,7 @@
 2. " npm i " command in project root dir
 3. create .env file end set:  
 TG_TOKEN=(your pesonal telegram token)  
+EXPRESS_PORT=(for example 8000)
 DATABASE_URL="postgresql://postgres:admin@localhost:5432/shopdb?schema=public"
 4. run " npm run build " and then " npm run start "  
 
