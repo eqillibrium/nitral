@@ -27,10 +27,11 @@ export class BotService implements IBotService {
 
 	initCommands(): void {
 		this.commands.forEach((commandElement: CommandMapElement) => {
-				this.bot.command(commandElement.command, commandElement.action)
-			}
+			this.bot.command(commandElement.command, commandElement.action)
+		})
+		this.bot.on('text', (ctx: IBotContext) =>
+			getKeyboardFromCommandsMap(ctx, commandsMap, 'Please, choose valid actions from the list'),
 		)
-		this.bot.on('text', (ctx: IBotContext) => getKeyboardFromCommandsMap(ctx, commandsMap, 'Please, choose valid actions from the list'))
 	}
 
 	private initMiddlewares(): void {

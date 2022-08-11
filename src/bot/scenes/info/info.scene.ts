@@ -9,15 +9,27 @@ class InfoScene extends SceneFactory {
 		super(id, commands)
 	}
 	protected onEnter(): void {
-		this.scene.enter((ctx) => getKeyboardFromCommandsMap(ctx, this.commands ?? [], 'You are now into the INFO scene. Choose actions:'))
+		this.scene.enter((ctx) =>
+			getKeyboardFromCommandsMap(
+				ctx,
+				this.commands ?? [],
+				'You are now into the INFO scene. Choose actions:',
+			),
+		)
 	}
 	protected onLeave(): void {
 		this.scene.leave((ctx) => ctx.reply('Leave info scene'))
 	}
 	protected onText(): void {
-		this.scene.on('text', (ctx: IBotContext) => getKeyboardFromCommandsMap(ctx, this.commands ?? [], 'You are now into the INFO scene. Choose actions:'))
+		this.scene.on('text', (ctx: IBotContext) =>
+			getKeyboardFromCommandsMap(
+				ctx,
+				this.commands ?? [],
+				'You are now into the INFO scene. Choose actions:',
+			),
+		)
 	}
-	init() {
+	init(): this {
 		this.onEnter()
 		this.bindCommands()
 		this.onText()

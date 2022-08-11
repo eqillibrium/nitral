@@ -5,7 +5,8 @@ import { getKeyboardFromCommandsMap } from './helpers/keyboard'
 export const commandsMap: CommandMapElement[] = [
 	{
 		command: '/start',
-		action: (ctx: IBotContext) => getKeyboardFromCommandsMap(ctx, commandsMap, 'Hello! Please, choose actions:')
+		action: (ctx: IBotContext) =>
+			getKeyboardFromCommandsMap(ctx, commandsMap, 'Hello! Please, choose actions:'),
 	},
 	{
 		command: '/test',
@@ -13,10 +14,10 @@ export const commandsMap: CommandMapElement[] = [
 	},
 	{
 		command: '/address',
-		action: (ctx:IBotContext) => ctx.scene.enter('address'),
+		action: (ctx: IBotContext) => ctx.scene.enter('address'),
 	},
 	{
 		command: '/info',
-		action: (ctx:IBotContext) => ctx.scene.enter('info'),
-	}
+		action: (ctx: IBotContext) => ctx.scene.enter('info'),
+	},
 ]

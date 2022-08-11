@@ -1,3 +1,3 @@
 import { Scenes } from 'telegraf'
 
-export interface IBotSessionScene extends Scenes.SceneSessionData {}
+export type IBotSessionScene = Scenes.SceneSessionData

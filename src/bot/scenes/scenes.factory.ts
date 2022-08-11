@@ -18,9 +18,10 @@ abstract class SceneFactory {
 		return this._scene
 	}
 	protected bindCommands(): void {
-		this.commands && this.commands.forEach(commandElement => {
-			this.scene.command(commandElement.command, commandElement.action)
-		})
+		this.commands &&
+			this.commands.forEach((commandElement) => {
+				this.scene.command(commandElement.command, commandElement.action)
+			})
 	}
 	protected abstract onEnter(): void
 	protected abstract onLeave(): void

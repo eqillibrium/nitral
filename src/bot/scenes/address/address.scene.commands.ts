@@ -4,7 +4,7 @@ import { Scenes } from 'telegraf'
 const addressSceneCommands: CommandMapElement[] = [
 	{
 		command: '/back',
-		action: Scenes.Stage.leave()
-	}
+		action: Scenes.Stage.leave(),
+	},
 ]
 export default addressSceneCommands
