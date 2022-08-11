@@ -7,7 +7,7 @@
   "scripts": {
     "seed": "tsc -t es5 prisma/seeds/index.ts && node prisma/seeds/index.js",
     "build": "tsc",
-    "start": "node ./dist/main.js",
+    "start": "node ./dist/src/main.js",
     "dev": "nodemon",
     "lint:fix": "eslint ./src/** --fix"
   },

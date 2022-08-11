@@ -1,6 +1,6 @@
-import { Context } from 'telegraf'
+import { IBotContext } from './bot.context.interface'
 
 export interface CommandMapElement {
 	command: string
-	action: (ctx: Context) => void
+	action: (ctx: IBotContext) => void
 }
