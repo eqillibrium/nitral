@@ -1,20 +1,22 @@
 import { inject, injectable } from 'inversify'
 import { TYPES } from '../types'
 import { IConfigService } from '../config/config.service.interface'
-import { Telegraf } from 'telegraf'
+import { Scenes, Telegraf } from 'telegraf'
 import { ILogger } from '../logger/logger.interface'
 import { IBotService } from './bot.service.interface'
 import { commandsMap } from './bot.commands'
 import { CommandMapElement } from './bot.commands.interface'
 import LocalSession from 'telegraf-session-local'
 import { IBotContext } from './bot.context.interface'
-import { stage } from './bot.stage'
 import { getKeyboardFromCommandsMap } from './helpers/keyboard'
+import addressSceneInstance from './scenes/address/address.scene'
+import infoSceneInstance from './scenes/info/info.scene'
 
 @injectable()
 export class BotService implements IBotService {
 	private readonly token!: string
 	protected bot: Telegraf<IBotContext>
+	protected stage: Scenes.Stage<IBotContext>
 	readonly commands: CommandMapElement[]
 	constructor(
 		@inject(TYPES.Logger) private logger: ILogger,
@@ -23,6 +25,7 @@ export class BotService implements IBotService {
 		this.token = this.configService.get('TG_TOKEN')
 		this.bot = new Telegraf(this.token)
 		this.commands = commandsMap
+		this.stage = new Scenes.Stage<IBotContext>([addressSceneInstance, infoSceneInstance])
 	}
 
 	initCommands(): void {
@@ -36,7 +39,7 @@ export class BotService implements IBotService {
 
 	private initMiddlewares(): void {
 		this.bot.use(new LocalSession({ database: 'session.json' }).middleware())
-		this.bot.use(stage.middleware())
+		this.bot.use(this.stage.middleware())
 	}
 
 	public async init(): Promise<void> {
