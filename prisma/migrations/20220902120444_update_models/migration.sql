@@ -1,0 +1,6 @@
+-- DropIndex
+DROP INDEX "TelegramCart_user_id_key";
+
+-- AlterTable
+ALTER TABLE "TelegramCart" ADD COLUMN     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ADD COLUMN     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP;

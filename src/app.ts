@@ -6,19 +6,19 @@ import { TYPES } from './types'
 import { PrismaService } from './database/prisma.service'
 import { json } from 'body-parser'
 import { ConfigService } from './config/config.service'
-import { IBotService } from './bot/bot.service.interface'
+import { IBotService } from './telegram/bot.service.interface'
+import { BOT_TYPES } from './telegram/bot.types'
 
 @injectable()
 class App {
 	app: Express
 	server!: Server
 	port: number
-	bot!: IBotService
 	constructor(
 		@inject(TYPES.Logger) private logger: ILogger,
 		@inject(TYPES.PrismaService) private prismaService: PrismaService,
 		@inject(TYPES.ConfigService) private configService: ConfigService,
-		@inject(TYPES.BotService) private botService: IBotService,
+		@inject(BOT_TYPES.BotService) private botService: IBotService,
 	) {
 		this.app = express()
 		this.port = this.configService.get('EXPRESS_PORT')

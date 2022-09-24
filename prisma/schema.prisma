@@ -17,3 +17,37 @@ model User {
     createdAt DateTime @default(now())
     updatedAt DateTime @default(now())
 }
+
+model Product {
+    id            Int @id @default(autoincrement())
+    name          String @unique
+    description   String
+    image         String
+    price         Int
+    telegram_cart TelegramCart[]
+    createdAt     DateTime @default(now())
+    updatedAt     DateTime @default(now())
+}
+
+model City {
+    id   Int @id @default(autoincrement())
+    name String @unique
+}
+
+model TelegramUser {
+    id            Int @id @default(autoincrement())
+    telegram_id   Int @unique
+    telegram_cart TelegramCart[]
+}
+
+model TelegramCart {
+    user       TelegramUser @relation (fields: [user_id], references: [id])
+    user_id    Int
+    product    Product @relation (fields: [product_id], references: [id])
+    product_id Int
+    price      Int
+    count      Int
+    createdAt  DateTime @default(now())
+    updatedAt  DateTime @default(now())
+    @@id([user_id, product_id])
+}
